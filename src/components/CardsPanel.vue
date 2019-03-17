@@ -9,11 +9,11 @@
                     xs3
                     md2
                   >
-                    <v-card @click="flip(card)">
-                        <v-img v-if="card.flipped" :src="card.src"
+                    <v-card class="custom-card" @click="flip(card)">
+                        <v-img class="back" v-if="card.flipped" :src="card.src"
                                aspect-ratio="0.703"
                                />
-                        <v-img v-else src="https://opengameart.org/sites/default/files/card%20back%20orange.png"
+                        <v-img class="front" v-else src="https://opengameart.org/sites/default/files/card%20back%20orange.png"
                                aspect-ratio="0.703"
                                />
                     </v-card>
@@ -25,12 +25,15 @@
 
 <script>
 import {cards} from './cards-items'
+import {bus} from './bus'
 export default {
     name: 'CardsPanel',
     data() {
       return {
          cards: cards,
          items: [],
+         gameIsRunning: false,
+         checkedCards: [],
       }
     },
     created() {
@@ -51,8 +54,40 @@ export default {
         },
 
         flip(item) {
-            console.log(item)
-            item.flipped = !item.flipped
+            if(item.checked !== true) {
+                item.flipped = !item.flipped
+                if(!this.gameIsRunning) {
+                    bus.$emit('start-time');
+                    this.gameIsRunning = true;
+                }
+                item.checked = true
+                setTimeout(() => {this.checkIfEqual(item)}, 1000);
+            }
+        },
+
+        checkIfEqual(item) {
+          this.checkedCards.push(item);
+          if(this.checkedCards.length > 1) {
+              for(let i=0; i<this.checkedCards.length; i++) {
+                if (this.checkedCards[i].src !== this.checkedCards[i+1].src) {
+                    this.checkedCards[i].flipped = this.checkedCards[i+1].flipped = false
+                    this.checkedCards[i].checked = this.checkedCards[i+1].checked = false
+                  }
+                break;
+              }
+              this.checkedCards = []
+          }
+          console.log(this.checkedCards)
+          this.checkIfFinished()
+        },
+
+        checkIfFinished() {
+            console.log(this.items)
+            if(this.items.every((card) => card.checked === true)) {
+                bus.$emit('stop-time');
+                console.log('Game stopped')
+                bus.$emit('show-dialog', true);
+            }
         }
     }
 }
@@ -60,10 +95,20 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+    @keyframes flipCard {
+        0%{ transform: rotateY(0deg) }
+        100%{ transform: rotateY(90deg) }
+    }
     .cards {
         border: 2px solid white;
         border-radius: 10px;
     }
-    .custom-card {
+
+    .custom-card:click .front{
+        animation: flipCard 0.2s easy-in forwards;
+    }
+
+    .custom-card:click .front{
+        animation: flipCard 0.2s 0.2s easy-out reverse;
     }
 </style>

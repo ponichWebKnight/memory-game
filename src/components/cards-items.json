@@ -1,10 +1,10 @@
 {
     "cards": [
-      { "title": "Girl-boobs", "src": "https://honeysanime.com/wp-content/uploads/2015/01/Mai-Kawakami-Musaigen-no-Phantom-World-capture-20160711211730-500x500.jpg", "flipped": false },
-      { "title": "Favorite road trips", "src": "https://hdwallpaperim.com/wp-content/uploads/2017/09/07/466785-purple_eyes-anime-anime_girls-animal_ears-nekomimi-tail-black_hair-748x906.jpg", "flipped": false },
-      { "title": "Best airlines", "src": "https://myanimelist.cdn-dena.com/s/common/uploaded_files/1444493404-e33c2a95fd43d2dabfb5cf42639e1ce5.jpeg", "flipped": false },
-      { "title": "Pre-fab homes", "src": "https://www.sensod.com/images/media/9/28/925483-1622177291340930-563947539-n-2018052819545577.jpg", "flipped": false },
-      { "title": "Favorite road trips", "src": "https://media.tenor.com/images/af52e3ded28a7e8ad5c3337046396983/raw", "flipped": false },
-      { "title": "Best airlines", "src": "https://i.pinimg.com/originals/29/f8/98/29f898123cf3087e89e874d11e1639b2.jpg", "flipped": false }
+      { "title": "Girl-boobs", "src": "https://honeysanime.com/wp-content/uploads/2015/01/Mai-Kawakami-Musaigen-no-Phantom-World-capture-20160711211730-500x500.jpg", "flipped": false, "checked": false },
+      { "title": "Favorite road trips", "src": "https://hdwallpaperim.com/wp-content/uploads/2017/09/07/466785-purple_eyes-anime-anime_girls-animal_ears-nekomimi-tail-black_hair-748x906.jpg", "flipped": false, "checked": false },
+      { "title": "Best airlines", "src": "https://ih1.redbubble.net/image.432592466.6590/flat,550x550,075,f.jpg", "flipped": false, "checked": false },
+      { "title": "Pre-fab homes", "src": "https://www.sensod.com/images/media/9/28/925483-1622177291340930-563947539-n-2018052819545577.jpg", "flipped": false, "checked": false },
+      { "title": "Favorite road trips", "src": "https://media.tenor.com/images/af52e3ded28a7e8ad5c3337046396983/raw", "flipped": false, "checked": false },
+      { "title": "Best airlines", "src": "https://i.pinimg.com/originals/29/f8/98/29f898123cf3087e89e874d11e1639b2.jpg", "flipped": false, "checked": false }
     ]
 }

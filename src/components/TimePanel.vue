@@ -7,9 +7,9 @@
 </template>
 
 <script>
+import {bus} from './bus'
 export default {
-  name: 'ControlPanel',
-  props: ['start', 'stop'],
+  name: 'TimePanel',
   data() {
       return {
           timer: null,
@@ -35,10 +35,15 @@ export default {
               this.secondsPassed = Math.floor(this.secondsPassed % 60);
               this.minutesPassed = Math.floor(this.minutesPassed % 60);
           }, 0);
+      },
+      stopGame() {
+          clearInterval(this.timer);
+          bus.$emit('show-time', this.minutesPassed + ' mins ' + this.secondsPassed + ' secs')
       }
   },
-  created() {
-     this.startGame()
+  mounted() {
+    bus.$on('start-time', this.startGame)
+    bus.$on('stop-time', this.stopGame)
   }
 }
 </script>
