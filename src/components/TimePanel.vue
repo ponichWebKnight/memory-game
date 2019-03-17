@@ -25,7 +25,7 @@ export default {
       },
   },
   methods: {
-      startGame() {
+      startTimer() {
           this.startTime = new Date().getTime();
           this.timer = setInterval(() => {
               this.time = new Date().getTime() - this.startTime;
@@ -36,14 +36,20 @@ export default {
               this.minutesPassed = Math.floor(this.minutesPassed % 60);
           }, 0);
       },
-      stopGame() {
+      stopTimer() {
           clearInterval(this.timer);
           bus.$emit('show-time', this.minutesPassed + ' mins ' + this.secondsPassed + ' secs')
+      },
+      resetTimer() {
+          this.minutesPassed = 0
+          this.secondsPassed = 0
+          this.time = 0
       }
   },
   mounted() {
-    bus.$on('start-time', this.startGame)
-    bus.$on('stop-time', this.stopGame)
+    bus.$on('start-time', this.startTimer)
+    bus.$on('stop-time', this.stopTimer)
+    bus.$on('reset-game', this.resetTimer)
   }
 }
 </script>

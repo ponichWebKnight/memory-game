@@ -47,6 +47,11 @@ export default {
   methods: {
       showDialog() {
           this.endGameDialog = true
+      },
+
+      resetGame() {
+          this.endGameDialog = false
+          bus.$emit('reset-game')
       }
   }
 }

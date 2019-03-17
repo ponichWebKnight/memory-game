@@ -39,6 +39,9 @@ export default {
     created() {
         this.resetGame()
     },
+    mounted() {
+        bus.$on('reset-game', this.resetGame)
+    },
     methods: {
         resetGame() {
             this.items = [];
@@ -50,6 +53,7 @@ export default {
                 const j = Math.floor(Math.random() * (i + 1));
                 [this.items[i], this.items[j]] = [this.items[j], this.items[i]];
             }
+            this.gameIsRunning = false;
 
         },
 
