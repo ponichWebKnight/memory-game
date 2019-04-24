@@ -1,5 +1,7 @@
 # memory-game
 
+Memory game is a card game, where user needs to memorize pairs of cards. Time tracker and general functionality are implemented. The project is done as an example of my skills in the Front-end development. Stack technology - Vue JS + bus event emmiter. The bus was choosen to prove my friends of mind i can do a work without the Vuex flux system.
+
 ## Project setup
 ```
 yarn install
